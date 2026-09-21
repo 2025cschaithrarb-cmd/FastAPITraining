@@ -1,3 +1,4 @@
+#concept : Class and Object
 class Dog:
     def bark(self):
         print("Woof!")
