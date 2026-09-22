@@ -16,6 +16,13 @@ def create():
     return {"message": "Created"}
 
  #Path parameters
-def get result(usn):
+
 @app.get("/students/{usn}")
+def get result(usn):
      return {"Result": "Distinction", "usn": usn}
+
+#Path parameters with type hint
+
+@app.get("/candidates/{rollno}")
+def get_candidate(rollno: int):
+     return {"Result": "Distinction", "rollno": rollno,"type": str(type(rollno))}
