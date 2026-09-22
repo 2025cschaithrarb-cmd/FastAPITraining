@@ -2,7 +2,7 @@ from fastapi import FastAPI
 app = FastAPI()
 @app.get("/")
 
-def hoome():
+def home():
     return {"page": "Home"}   
 @app.get("/about")
 def about():
@@ -10,3 +10,7 @@ def about():
 @app.get("/health")
 def health():
     return {"Status": "OK"}
+#Post Request
+@app.post("/create")
+def create():
+    return {"message": "Created"} 
