@@ -1,6 +1,12 @@
 from fastapi import FastAPI
 app = FastAPI()
 @app.get("/")
-def read_root():
-    
-    return {"message": "Hello, World!" , "number":44, "is_fun":True}   
+
+def hoome():
+    return {"page": "Home"}   
+@app.get("/about")
+def about():
+    return {"page": "About","Author": "Chaithra"}
+@app.get("/health")
+def health():
+    return {"Status": "OK"}
