@@ -19,7 +19,7 @@ def create():
 
 @app.get("/students/{usn}")
 def get result(usn):
-     return {"Result": "Distinction", "usn": usn}
+    return {"Result": "Distinction", "usn": usn}
 
 #Path parameters with type hint
 
