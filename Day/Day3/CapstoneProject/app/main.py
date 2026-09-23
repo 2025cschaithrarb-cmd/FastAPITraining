@@ -2,6 +2,7 @@
 from fastapi import FastAPI
 from app.config import settings
 from app.database import ping_database 
+
 #Creating fstapi app instance
 app = FastAPI(title=settings.APP_NAME)
 #This function runs when the server starts. It checks the DB connection.
