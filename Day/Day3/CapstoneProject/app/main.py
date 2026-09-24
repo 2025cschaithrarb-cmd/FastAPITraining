@@ -1,18 +1,26 @@
-#This file is the enry point of applications
+# This file is the "entry point" of the application
 from fastapi import FastAPI
-from app.config import settings
-from app.database import ping_database 
 
-#Creating fstapi app instance
+from app.config import settings
+from app.database import ping_database
+from app.routers import users
+from app.routers import categories
+
+# Creating FastAPI app instance
 app = FastAPI(title=settings.APP_NAME)
-#This function runs when the server starts. It checks the DB connection.
+
+app.include_router(users.router)
+app.include_router(categories.router)
+
+# This function runs once when the server starts. It checks the DB connection.
 @app.on_event("startup")
-def startup_event():
+def on_startup() -> None:
     if not ping_database():
         raise RuntimeError("Could not connect to MongoDB")
     print(f"[startup]Connected to MongoDB. App:{settings.APP_NAME}")
-#Checks basic helth checks API endpoint and confirms 
-# GET / is running and reachable.(/ is considered as a root)
+
+# Checks basic health-check API endpoint & confirms 
+# GET / is running & reachable. (/ is considered as 'root')
 @app.get("/",tags=["Health"])
 def health_check():
     return {"status":"ok","app":settings.APP_NAME}
