@@ -1,4 +1,4 @@
-# app/routers/categories.py
+# app/router/categories.py
 #
 # Purpose:
 #   HTTP endpoints for the Category entity.
